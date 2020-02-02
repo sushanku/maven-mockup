@@ -1,0 +1,7 @@
+  
+---
+# or sudo access
+mysql_root_username: root
+mysql_root_password: root@123
+mysql_root_old_password: root
+mysql_root_new_password: root

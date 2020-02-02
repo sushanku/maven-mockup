@@ -1,0 +1,9 @@
+---
+# handlers file for /home/sushan/ansible-practice/mysql
+
+#sudo service mysql restart (whether running or not)
+- name: Restart mysql
+  service: 
+    name: mysql
+    state: restarted
+    enabled: yes

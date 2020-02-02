@@ -1,0 +1,9 @@
+---
+- name: Run MySQL Role
+  hosts: localhost
+#  become: yes
+#  become_method: sudo
+  roles:
+    - mysql
+  vars_files:
+    - /home/sushan/ansible-practice/roles/mysql/vars/main.yml

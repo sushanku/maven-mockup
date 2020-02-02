@@ -1,0 +1,53 @@
+---
+#- name: install python-mysqldb
+#  apt:
+#    name: python-mysqldb
+#    state: present
+#    update_cache: yes
+#  tags: python_mysql_connector
+
+#check if mysql service is started
+- name: Start the MySQL service
+  service: 
+    name: mysql 
+    state: started
+    enabled: true
+  tags: mysql_status
+
+#create Database
+- name: Create Database
+  mysql_db:
+    name: mockup_db
+    state: present
+  tags: create_db
+
+- name: Add user
+  mysql_user:
+    name: mockup
+    host: localhost
+    password: mockup123
+    priv: 'mockup_db.*:ALL'
+    state: present
+  tags: add_user
+
+- name: Delete user
+  mysql_user:
+    name: mockup
+    host: localhost
+    state: absent
+  tags: delete_user
+
+- name: Delete Database
+  mysql_db:
+    name: mockup_db
+    state: absent
+  tags: remove_db
+
+- name: import database
+  mysql_db:
+    login_user: mockup
+    login_password: mockup123
+    name: mockup_db
+    state: import
+    target: mockup_db.sql
+  tags: import_db
