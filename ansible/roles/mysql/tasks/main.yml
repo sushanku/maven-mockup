@@ -49,5 +49,5 @@
     login_password: mockup123
     name: mockup_db
     state: import
-    target: mockup_db.sql
+    target: /tmp/mockup_db.sql
   tags: import_db
