@@ -1,2 +1,2 @@
-# mvn-mockup
+# maven-mockup
 
