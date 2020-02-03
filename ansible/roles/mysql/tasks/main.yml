@@ -17,37 +17,36 @@
 #create Database
 - name: Create Database
   mysql_db:
-    name: mockup_db
+    name: "{{ db_name }}"
     state: present
   tags: create_db
 
 - name: Add user
   mysql_user:
-    name: mockup
-    host: localhost
-    password: mockup123
-    priv: 'mockup_db.*:ALL'
+    name: "{{ username }}"
+    host: "{{ host }}"
+    password: "{{ password }}"
+    priv: ' {{ db_name }}.*:ALL' 
     state: present
   tags: add_user
 
 - name: Delete user
   mysql_user:
-    name: mockup
-    host: localhost
+    name: "{{ username }}"
     state: absent
   tags: delete_user
 
 - name: Delete Database
   mysql_db:
-    name: mockup_db
+    name: " {{ db_name }}"
     state: absent
   tags: remove_db
 
 - name: import database
   mysql_db:
-    login_user: mockup
-    login_password: mockup123
-    name: mockup_db
+    login_user: "{{ username }}"
+    login_password: "{{ password }}"
+    name: "{{ db_name }}"
     state: import
     target: /tmp/mockup_db.sql
   tags: import_db
