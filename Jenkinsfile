@@ -22,6 +22,7 @@ pipeline {
       }
       steps {
         sh 'sh jenkins/scripts/test.sh'
+        archiveArtifacts '/home/jenkins/workspace/maven-mockup_master/testcase/target/surefire-reports/*xml'
       }
     }
 
