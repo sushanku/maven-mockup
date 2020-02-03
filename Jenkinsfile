@@ -21,7 +21,6 @@ pipeline {
 
       }
       steps {
-        git(branch: 'master', changelog: true, url: 'https://github.com/sushanku/test-cases.git', credentialsId: 'bitbucket-sushan', poll: true)
         sh 'sh jenkins/scripts/test.sh'
       }
     }
