@@ -22,7 +22,7 @@ pipeline {
       }
       steps {
         sh 'sh jenkins/scripts/test.sh'
-        archiveArtifacts 'testcase/target/surefire-reports/*xml'
+        archiveArtifacts 'testcase/target/surefire-reports/*html'
       }
     }
 
