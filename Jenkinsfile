@@ -1,6 +1,6 @@
 pipeline {
+  agent none
   stages {
-    agent none
     stage('Build') {
       agent any
       post {
