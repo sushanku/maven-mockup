@@ -12,3 +12,4 @@ mvn test "-Dtest=Test.Runner"
 cd ..
 ansible-playbook -i ansible/hosts --extra-vars "db_name=mockup_db username=mockup" -t "delete_user, remove_db" ansible/mysqlsetup.yml
 rm -rf /tmp/mockup_db.sql
+rsync target/test-1.0-SNAPSHOT-jar-with-dependencies.jar /home/jenkins/deploy/maven-mockup

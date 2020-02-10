@@ -1,6 +1,6 @@
 ---
 - name: Run MySQL Role
-  hosts: localhost
+  hosts: slave
 #  become: yes
 #  become_method: sudo
   roles:
