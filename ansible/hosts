@@ -1,0 +1,7 @@
+#localhost
+
+[all:vars]
+ansible_python_interpreter='/usr/bin/env python3'
+
+[slave]
+192.168.58.100

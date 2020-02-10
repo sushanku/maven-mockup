@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent { label 'slave' }
   stages {
     stage('Build') {
       post {
@@ -10,6 +10,7 @@ pipeline {
       }
       steps {
         sh 'mvn clean install'
+	publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
       }
     }
 
