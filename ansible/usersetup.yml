@@ -1,0 +1,7 @@
+---
+- name: Run MySQL Role
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  roles:
+    - user-management
