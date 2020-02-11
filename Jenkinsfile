@@ -11,7 +11,8 @@ pipeline {
       }
       steps {
         sh 'mvn clean install'
-	publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: 'target/site/', reportFiles: 'surefire-report.html', reportName: 'HTML Report', reportTitles: ''])
+	sh 'cp -rf target/test-1.0-SNAPSHOT-jar-with-dependencies.jar /home/jenkins/deploy/maven-mockup'
+	sh 'rsync target/test-1.0-SNAPSHOT-jar-with-dependencies.jar jenkins@192.168.58.100:/home/jenkins/deploy/maven-mockup'
       }
     }
 
