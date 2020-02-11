@@ -11,8 +11,8 @@ pipeline {
       }
       steps {
         sh 'mvn clean install'
-	sh 'cp -rf target/test-1.0-SNAPSHOT-jar-with-dependencies.jar /home/jenkins/deploy/maven-mockup'
-	sh 'rsync target/test-1.0-SNAPSHOT-jar-with-dependencies.jar jenkins@192.168.58.100:/home/jenkins/deploy/maven-mockup'
+        sh 'cp -rf target/test-1.0-SNAPSHOT-jar-with-dependencies.jar /home/jenkins/deploy/maven-mockup'
+        sh 'rsync -avz --stats --progress /home/jenkins/deploy/maven-mockup/test-1.0-SNAPSHOT-jar-with-dependencies.jar jenkins@192.168.58.100:/home/jenkins/deploy/maven-mockup'
       }
     }
 
@@ -21,7 +21,7 @@ pipeline {
       post {
         always {
           emailext(subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}", attachLog: true, to: 'sushan@moco.com.np', from: 'sysadmin@moco.com.np')
-	  junit 'testcase/target/surefire-reports/*xml'
+          junit 'testcase/target/surefire-reports/*xml'
         }
 
       }
@@ -32,7 +32,9 @@ pipeline {
     }
 
     stage('Deploy') {
-      agent { label 'slave' }
+      agent {
+        label 'slave'
+      }
       steps {
         sh 'sh jenkins/scripts/deploy.sh'
         input 'Finished using the mockup maven app? (Click "Proceed" to continue)'
