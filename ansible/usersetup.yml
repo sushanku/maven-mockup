@@ -6,4 +6,4 @@
   roles:
     - user-management
   vars_files:
-    - ansible/roles/user-management/vars/main.yml
+    - `pwd`/ansible/roles/user-management/vars/main.yml
