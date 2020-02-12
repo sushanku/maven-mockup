@@ -5,5 +5,3 @@
   become_method: sudo
   roles:
     - user-management
-  vars_files:
-    - `pwd`/ansible/roles/user-management/vars/main.yml
