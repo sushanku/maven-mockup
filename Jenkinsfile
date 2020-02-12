@@ -33,7 +33,7 @@ pipeline {
         input 'Finished using the mockup maven app? (Click "Proceed" to continue)'
         sh 'sh jenkins/scripts/kill.sh'
         sh 'echo Thank You'
-	sh 'ansible-playbook -i ansible/localhost  --extra-vars "deploy_user=mockup" -t "remove_user" usersetup.yml'
+        sh 'ansible-playbook -i ansible/localhost  --extra-vars "deploy_user=mockup" -t "remove_user" ansible/usersetup.yml'
       }
     }
 
