@@ -52,7 +52,7 @@ Role Variables
   so that ansible-playbook can have access to complete the required tasks.
  
 * user-management role
-  * ansible/roles/user-management/vars/main.yml contains the deployment user password.
+  * ansible/roles/user-management/vars/main.yml contains the deployment user password. Deployment in this case is done locally but if you want to deploy remotely then set-up ssh between the current server and remote production server with passwordless sudo access because all the user-management tasks requires a sudo privelege.
 
 **P.S.** It is better to use ansible-vault to hide the passwords but for the simplicity of this task, I have directly used the password from the variables. Also, in some cases using variables are passed using "--extra-vars" in ansible-playbook.  
 
