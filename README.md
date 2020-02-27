@@ -1,5 +1,27 @@
 # Jenkins - GitHub Deployment (small maven project)
 
+This repo demonstrates how to deploy a maven based project from GitHub using Jenkins Pipeline and ansible.\
+In this project, maven based application is built, where API testing is done. The test deployment will be done as well.\
+If the pipeline builds without failure, and if every test cases are passed, it will proceed to test deployment.\
+Then finally it will be deployed in the production environment. (Here in this case is local).
+See the Jenkinsfile for the exact Pipeline.
+
+Prerequisite
+------------
+1. Jenkins, maven should be installed.
+2. Test and Deployment is handled by ansible, therefore ansible needs to be installed as well.
+
+Requirements
+------------
+1. Create a Multibranch Pipeline (or use GitHub Organization Folders) within Jenkins that references this repository.
+2. 
+
+
+
+Update vars/main.yml user password as required.\
+Update hosts file accordingly as per your host ip.
+
+
 Ansible Roles
 =========
 This is ansible automatation to manager users and groups in Linux server.\
