@@ -1,9 +1,11 @@
 # Jenkins - GitHub Deployment (small maven project)
 
 This repo demonstrates how to deploy a maven based project from GitHub using Jenkins Pipeline and ansible.\
-In this project, maven based application is built, where API testing is done. The test deployment will be done as well.\
-If the pipeline builds without failure, and if every test cases are passed, it will proceed to test deployment.\
-Then finally it will be deployed in the production environment. (Here in this case is local).
+In this project, maven based application is built, tested and deployed.
+in Build stage.\ 
+Then the test deployment will be done in Test stagewhere API testing is done.\
+If the pipeline builds without failure, and if every test cases are passed, it will proceed to the production i.e Deploy stage.\
+
 See the Jenkinsfile for the exact Pipeline.
 
 Prerequisite
@@ -14,12 +16,25 @@ Prerequisite
 Requirements
 ------------
 1. Create a Multibranch Pipeline (or use GitHub Organization Folders) within Jenkins that references this repository.
-2. 
+2. Pipeline will then instructs Jenkins to proceed through build, test and deploy phase.
+3. In build stage,
 
 
+How it Works
+------------
+The Jenkins pipeline has 3 stages: Build, Test and Deploy.
 
-Update vars/main.yml user password as required.\
-Update hosts file accordingly as per your host ip.
+* Build Stage:
+  * Maven command is run to build the project.
+
+* Test Stage:
+  * To test the built project, the test deployment is carried out locally where API testing is done.\
+  * First, it runs the test.sh script from jenkins/scripts/test.sh. This scripts file has necessary bash command to deploy the build project for test purpose. Scripts also uses ansible to create the mysql user and database. Before the completion of test phase, ansible removes the mysql user and db.
+  * Then, Jenkins pipeline will artifact the 
+
+
+If the pipeline builds without failure, and if every test cases are passed, it will proceed to the production i.e Deploy stage.\
+
 
 
 Ansible Roles
