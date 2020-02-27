@@ -24,6 +24,7 @@ pipeline {
       steps {
         sh 'sh jenkins/scripts/test.sh'
         archiveArtifacts 'testcase/target/surefire-reports/*html'
+        sh 'sh jenkins/scripts/kill.sh'
       }
     }
 
