@@ -40,19 +40,21 @@ The Jenkins pipeline has 3 stages: Build, Test and Deploy.
 Ansible Roles and its task
 ========
 Ansible helps in automated deployment. 
-Two Roles are used i.e mysql and user-management which is found under ansible/roles/.\
+Two Roles are used i.e mysql and user-management which is found under ansible/roles/.
 * mysql role have a tasks to add_user, create_db, delete_user, import_db, mysql_status, remove_db.
 * user-management role have a task to create add_new_user, copy_pub_key, create_dir, generate_ssh_keys, remove_user.
 
 Role Variables
 --------------
 * mysql role
- * ansible/roles/mysql/vars/main.yml has the variable and it contains the mysql root password, which in this case is not used, but whoever user runs the ansible-playbook, that users home directory most contain mysql root username and password in .my.cnf hidden file so that ansible-playbook can have access to complete the required tasks.
+  * ansible/roles/mysql/vars/main.yml has the variable and it contains the mysql root password, which in this case is not used, but
+  whoever user runs the ansible-playbook, that users home directory most contain mysql root username and password in .my.cnf hidden file
+  so that ansible-playbook can have access to complete the required tasks.
  
 * user-management role
- * ansible/roles/user-management/vars/main.yml contains the deployment user password. But password can be provided as
+ * ansible/roles/user-management/vars/main.yml contains the deployment user password.
 
-** P.S. It is better to use ansible-vault to hide the passwords but for the simplicity of this task, I have directly used the password from the variables. Also, in some cases using variables are passed using "--extra-vars" in ansible-playbook.  
+** P.S. ** It is better to use ansible-vault to hide the passwords but for the simplicity of this task, I have directly used the password from the variables. Also, in some cases using variables are passed using "--extra-vars" in ansible-playbook.  
 
 Author Information
 ------------------
