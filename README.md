@@ -7,8 +7,8 @@ See the Jenkinsfile for the exact Pipeline.
 Prerequisite
 ------------
 1. Ubuntu server, at least version(java 1.8, mysql 5.6), python-mysqldb(mysql python connector).
-2. Jenkins, maven should be installed.
-2. Test and Deployment is handled by ansible, therefore ansible and at least python 2.7 needs to be installed as well.
+2. Jenkins, maven, ansible should be installed.
+2. Provision Managent is handled by ansible including the deployment.
 
 Requirements
 ------------
