@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 echo 'Deploy before testing'
-cp mockup_db.sql /tmp
+cp target/test-1.0-SNAPSHOT-jar-with-dependencies.jar mockup_db.sql /tmp
 ansible-playbook -i ansible/localhost --extra-vars "db_name=mockup_db host=localhost username=mockup password=mockup123" --tags "create_db,add_user,import_db" ansible/mysqlsetup.yml
 set -x
 java -jar target/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
