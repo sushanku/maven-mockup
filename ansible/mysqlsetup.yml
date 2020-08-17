@@ -5,5 +5,3 @@
 #  become_method: sudo
   roles:
     - mysql
-  vars_files:
-    - /home/sushan/ansible-practice/roles/mysql/vars/main.yml
