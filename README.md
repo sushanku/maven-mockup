@@ -1,7 +1,7 @@
 # Jenkins - GitHub Deployment (small maven project)
 
-This repo demonstrates how to deploy a maven based project from GitHub using Jenkins Pipeline and ansible.\
-In this project, maven based application is built, tested and deployed.\
+This repo demonstrates how to deploy a maven based project from GitHub using Jenkins Pipeline and ansible.
+In this project, maven based application is built, tested and deployed.
 See the Jenkinsfile for the exact Pipeline.
 
 Prerequisite
@@ -24,7 +24,7 @@ The Jenkins pipeline has 3 stages: Build, Test and Deploy.
   * Maven command is run to build the project.
 
 * Test Stage:
-  * To test the built project, the test deployment is carried out locally where API testing is done.\
+  * To test the built project, the test deployment is carried out locally where API testing is done.
   * First, it runs the test.sh script from jenkins/scripts/test.sh. This scripts file has necessary bash command to deploy the build project for test purpose. Scripts also uses ansible to create the mysql user and database. Before the completion of test phase, ansible removes the mysql user and db.
   * After API tests is completed, it will terminate the test deployment.
   * Email will also be sent with build log and results. (P.S. To send email, first do a email setup in jenkins, either use your own or google mail server to send an email)
