@@ -47,11 +47,17 @@
   with_items: 
     - '/tmp/test-1.0-SNAPSHOT-jar-with-dependencies.jar'
     - './etc'
-    - './mockup_db.sql'
   tags: copy_deploy_file
 
+- name: Copy DB File in tmp folder
+  copy:
+    src: ./mockup_db.sql
+    dest: /tmp
+  tags: copy_DB
 
 - name: Deploy Jar File
+  become: yes
+  become_user: "{{ deploy_user }}"
   shell: cd {{ deploy_dir }} && java -jar {{ deploy_dir }}/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
   tags: deploy_jar
 

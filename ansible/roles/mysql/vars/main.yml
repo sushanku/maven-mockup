@@ -3,5 +3,5 @@
 # or sudo access
 mysql_root_username: root
 mysql_root_password: root
-deploy_dir: /home/mockup/deploy
+#deploy_dir: /tmp
 

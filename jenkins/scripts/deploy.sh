@@ -7,7 +7,8 @@ ansible-playbook -i ansible/hosts --limit production --extra-vars "db_name=mocku
 #ansible playbook to create user and transfer the neccessary deployment files and deploy it.
 #ansible-playbook -i ansible/hosts --limit production -t "deploy_jar" ansible/usersetup.yml
 ssh mockup@production
-cd /home/mockup/deploy
+cd deploy
 set -x
 java -jar /home/mockup/deploy/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
 set +x
+echo `pwd`

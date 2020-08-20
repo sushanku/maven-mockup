@@ -48,5 +48,5 @@
     login_password: "{{ password }}"
     name: "{{ db_name }}"
     state: import
-    target: "/{{ deploy_dir }}/mockup_db.sql"
+    target: /tmp/mockup_db.sql
   tags: import_db
