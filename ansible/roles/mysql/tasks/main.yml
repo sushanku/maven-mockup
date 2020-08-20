@@ -38,7 +38,7 @@
 
 - name: Delete Database
   mysql_db:
-    name: " {{ db_name }}"
+    name: "{{ db_name }}"
     state: absent
   tags: remove_db
 
