@@ -6,11 +6,8 @@ pipeline {
         failure {
           emailext(attachmentsPattern: 'testcase/target/surefire-reports/*html', subject: "Jenkins Build ${currentBuild.currentResult}: Job ${env.JOB_NAME}", body: "${currentBuild.currentResult}: Job ${env.JOB_NAME} build ${env.BUILD_NUMBER} \n More info at: ${env.BUILD_URL}", attachLog: true, to: 'sushan@moco.com.np', from: 'sysadmin@moco.com.np')
         }
-	success {
-	  archiveArtifacts 'target/test-1.0-SNAPSHOT-jar-with-dependencies.jar'
-	}
-
       }
+      
       steps {
         sh 'mvn clean install'
       }
@@ -27,7 +24,7 @@ pipeline {
       steps {
         sh 'sh jenkins/scripts/test.sh'
         archiveArtifacts 'testcase/target/surefire-reports/*html'
-        sh 'sh jenkins/scripts/kill.sh'
+        sh 'sh jenkins/scripts/test-kill.sh'
       }
     }
 
@@ -35,9 +32,8 @@ pipeline {
       steps {
         sh 'sh jenkins/scripts/deploy.sh'
         input 'Finished using the mockup maven app? (Click "Proceed" to continue)'
-        sh 'sh jenkins/scripts/kill.sh'
+        sh 'sh jenkins/scripts/prod-kill.sh'
         sh 'echo Thank You'
-        sh 'ansible-playbook -i ansible/localhost  --extra-vars "deploy_user=mockup" -t "remove_user" ansible/usersetup.yml'
       }
     }
 

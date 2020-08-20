@@ -34,7 +34,7 @@
   mysql_user:
     name: "{{ username }}"
     state: absent
-  tags: delete_user
+  tags: remove_user
 
 - name: Delete Database
   mysql_db:

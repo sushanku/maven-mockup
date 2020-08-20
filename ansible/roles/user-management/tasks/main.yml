@@ -52,7 +52,7 @@
 
 
 - name: Deploy Jar File
-  shell: java -jar {{ deploy_dir }}/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
+  shell: cd {{ deploy_dir }} && java -jar {{ deploy_dir }}/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
   tags: deploy_jar
 
 ## This task is to delete the user
