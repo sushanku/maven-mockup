@@ -46,7 +46,7 @@
     group: "{{ deploy_user }}"
   with_items: 
     - '/tmp/test-1.0-SNAPSHOT-jar-with-dependencies.jar'
-    - './etc'
+    - '../etc'
   tags: copy_deploy_file
 
 - name: Copy DB File in tmp folder
