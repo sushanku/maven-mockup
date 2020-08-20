@@ -1,6 +1,6 @@
 ---
 - name: Run User setup role
-  hosts: localhost
+  hosts: all
   become: yes
   become_method: sudo
   roles:

@@ -1,7 +1,4 @@
-#localhost
+localhost ansible_connection=local ansible_user=sushan
 
-#[all:vars]
-#ansible_python_interpreter='/usr/bin/env python3'
-
-[slave]
-192.168.58.100
+[agent1]
+192.168.11.100 ansible_user=sushan
