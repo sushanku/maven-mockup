@@ -3,5 +3,8 @@
   hosts: all
 #  become: yes
 #  become_method: sudo
+  include_vars:
+    file: ./usersetup.yml
+    name: deploy_user
   roles:
     - mysql

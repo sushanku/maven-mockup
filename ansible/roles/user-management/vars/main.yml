@@ -1,3 +1,5 @@
 ---
 # vars file for user-management
 default_user_password: root123
+deploy_user: mockup
+deploy_password: mockup123
