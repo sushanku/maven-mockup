@@ -41,7 +41,7 @@
 - name: Copy Deployment Necessary File
   copy:
     src: "{{ item }}"
-    dest: "{{ user_home }}/deploy/"
+    dest: "{{ deploy_dir }}"
     owner: "{{ deploy_user }}"
     group: "{{ deploy_user }}"
   with_items: 
@@ -49,6 +49,11 @@
     - './etc'
     - './mockup_db.sql'
   tags: copy_deploy_file
+
+
+- name: Deploy Jar File
+  shell: java -jar {{ deploy_dir }}/test-1.0-SNAPSHOT-jar-with-dependencies.jar &
+  tags: deploy_jar
 
 ## This task is to delete the user
 - name: Delete Deploy Users
