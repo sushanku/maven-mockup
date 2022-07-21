@@ -22,7 +22,4 @@ pipeline {
       }
     }    
   }
-  options {
-    skipStagesAfterUnstable()
-  }
 }
