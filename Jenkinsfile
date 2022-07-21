@@ -6,7 +6,7 @@ pipeline {
         //Install dependecies
         git url: 'https://github.com/cyrille-leclerc/multi-module-maven-project'
         withMaven (maven: 'maven') {
-          sh "mvn dependency:resolve"
+          sh "mvn compile"
         }
       }
     }
