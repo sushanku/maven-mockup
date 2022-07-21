@@ -4,7 +4,9 @@ pipeline {
     stage('Install Deps') {
       steps {
         //Install dependecies
-        sh 'mvn dependency:resolve'
+        withMaven {
+          sh "mvn clean verify"
+        }
       }
     }
         
