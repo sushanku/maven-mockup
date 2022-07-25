@@ -9,6 +9,13 @@ pipeline {
         }
       }
     }
+    stage('SonarQube Analysis') {
+//       def mvn = tool 'Default Maven';
+      withSonarQubeEnv() {
+        withMaven (maven: 'maven') {
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project""
+        }
+    }
         
     stage ('OWASP Dependency-Check Vulnerabilities') {
       steps {
