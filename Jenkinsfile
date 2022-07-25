@@ -15,6 +15,7 @@ pipeline {
         withMaven (maven: 'maven') {
           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
         }
+      }
     }
         
     stage ('OWASP Dependency-Check Vulnerabilities') {
