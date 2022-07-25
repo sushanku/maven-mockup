@@ -1,14 +1,22 @@
 pipeline {
   agent any
   stages {  
-    stage('Install Deps') {
+    stage('Build') {
       steps {
-        //Install dependecies
         withMaven (maven: 'maven') {
           sh "mvn clean install"
         }
       }
     }
+    
+    stage('Test Coverage') {
+      steps {
+        withMaven (maven: 'maven') {
+          sh "mvn sonar:sonar -Pcoverage"
+        }
+      }
+    }
+    
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('sonar-jenkins-scanner') {
@@ -19,15 +27,15 @@ pipeline {
       }
     }
         
-    stage ('OWASP Dependency-Check Vulnerabilities') {
-      steps {
-        dependencyCheck additionalArguments: ''' 
-        -o "./" 
-        --scan "./"
-        -f "ALL" 
-        --prettyPrint''', odcInstallation: 'OWASP-DC'
-        dependencyCheckPublisher pattern: 'dependency-check-report.xml'
-      }
-    }    
+//     stage ('OWASP Dependency-Check Vulnerabilities') {
+//       steps {
+//         dependencyCheck additionalArguments: ''' 
+//         -o "./" 
+//         --scan "./"
+//         -f "ALL" 
+//         --prettyPrint''', odcInstallation: 'OWASP-DC'
+//         dependencyCheckPublisher pattern: 'dependency-check-report.xml'
+//       }
+//     }    
   }
 }
