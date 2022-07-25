@@ -9,18 +9,19 @@ pipeline {
       }
     }
     
-    stage('Test Coverage') {
-      steps {
-        withMaven (maven: 'maven') {
-          sh "mvn sonar:sonar -Pcoverage"
-        }
-      }
-    }
+//     stage('Test Coverage') {
+//       steps {
+//         withMaven (maven: 'maven') {
+//           sh "mvn sonar:sonar -Pcoverage"
+//         }
+//       }
+//     }
     
     stage('SonarQube Analysis') {
       steps {
         withSonarQubeEnv('sonar-jenkins-scanner') {
           withMaven (maven: 'maven') {
+          sh "mvn sonar:sonar -Pcoverage"
           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
           }
         }
