@@ -11,7 +11,7 @@ pipeline {
     }
     stage('SonarQube Analysis') {
       steps {
-        withSonarQubeEnv() {
+        withSonarQubeEnv('sonar-jenkins-scanner') {
           withMaven (maven: 'maven') {
           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
           }
