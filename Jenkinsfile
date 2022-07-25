@@ -13,7 +13,7 @@ pipeline {
       steps {
         withSonarQubeEnv('sushan-sonarqube') {
           withMaven (maven: 'maven') {
-          sh "mvn -Dsonar.coverage.jacoco.xmlReportPaths= ./target/site/jacoco-aggregate/jacoco.xml sonar:sonar -Pcoverage"
+          sh "mvn -Dsonar.coverage.jacoco.xmlReportPaths=./target/site/jacoco-aggregate/jacoco.xml sonar:sonar -Pcoverage"
           }
         }
       }
