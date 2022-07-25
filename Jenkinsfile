@@ -10,10 +10,11 @@ pipeline {
       }
     }
     stage('SonarQube Analysis') {
-//       def mvn = tool 'Default Maven';
-      withSonarQubeEnv() {
-        withMaven (maven: 'maven') {
+      steps {
+        withSonarQubeEnv() {
+          withMaven (maven: 'maven') {
           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
+          }
         }
       }
     }
