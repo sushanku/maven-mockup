@@ -19,15 +19,15 @@ pipeline {
       }
     }
     
-    stage('SonarQube Analysis') {
-      steps {
-        withSonarQubeEnv('sonar-jenkins-scanner') {
-          withMaven (maven: 'maven') {
-          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
-          }
-        }
-      }
-    }
+//     stage('SonarQube Analysis') {
+//       steps {
+//         withSonarQubeEnv('sonar-jenkins-scanner') {
+//           withMaven (maven: 'maven') {
+//           sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
+//           }
+//         }
+//       }
+//     }
         
 //     stage ('OWASP Dependency-Check Vulnerabilities') {
 //       steps {
