@@ -5,7 +5,7 @@ pipeline {
       steps {
         //Install dependecies
         withMaven (maven: 'maven') {
-          sh "mvn compile"
+          sh "mvn clean install"
         }
       }
     }
