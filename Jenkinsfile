@@ -13,7 +13,7 @@ pipeline {
 //       def mvn = tool 'Default Maven';
       withSonarQubeEnv() {
         withMaven (maven: 'maven') {
-          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project""
+          sh "mvn clean verify sonar:sonar -Dsonar.projectKey=random-project"
         }
     }
         
