@@ -4,20 +4,20 @@ pipeline {
     stage('Build') {
       steps {
         withMaven (maven: 'maven') {
-          sh "mvn clean install"
+          sh "mvn clean verify"
         }
       }
     }
     
-    stage('Test Coverage') {
-      steps {
-        withSonarQubeEnv('sushan-sonarqube') {
-          withMaven (maven: 'maven') {
-          sh "mvn sonar:sonar -Pcoverage"
-          }
-        }
-      }
-    }
+//     stage('Test Coverage') {
+//       steps {
+//         withSonarQubeEnv('sushan-sonarqube') {
+//           withMaven (maven: 'maven') {
+//           sh "mvn sonar:sonar -Pcoverage"
+//           }
+//         }
+//       }
+//     }
     
 //     stage('SonarQube Analysis') {
 //       steps {
